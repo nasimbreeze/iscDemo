@@ -157,6 +157,11 @@
                         <version>1.18.34</version>
                         <scope>compile</scope>
                     </dependency>
+                        <dependency>
+                            <groupId>org.postgresql</groupId>
+                            <artifactId>postgresql</artifactId>
+                            <version>42.2.5</version>
+                        </dependency>
                 </dependencies>
             </plugin>
             <plugin>
