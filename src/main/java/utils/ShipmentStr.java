@@ -3,17 +3,17 @@ package utils;
 
 import javax.validation.constraints.NotNull;
 
-public class ShipAddress {
+public class ShipmentStr {
 
         @NotNull
         private String country;
         @NotNull
         private String city;
         @NotNull
-        private String strAdd;
-
-        private String street;
+        private String address;
         @NotNull
         private String zipCode;
-    }
+
+        private String street;
+}
 

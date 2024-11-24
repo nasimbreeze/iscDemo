@@ -28,7 +28,7 @@ public class Card {
 
     @Setter
     @Getter
-    @Size(min = 16, max = 16)
+    @Size(message = "card number must be 16 digits", min = 16, max = 16)
     private int cardNo;
 
     @Getter

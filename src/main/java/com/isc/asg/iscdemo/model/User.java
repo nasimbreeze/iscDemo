@@ -2,7 +2,7 @@ package com.isc.asg.iscdemo.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import utils.ShipAddress;
+import utils.ShipmentStr;
 import java.time.Instant;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,24 +33,26 @@ public class User {
     @Getter
     private String lastname;
 
-
     @Setter
     @Getter
     @NotNull
+    @Size(min = 10, max = 10)
     private int accountNo;
 
-    @Valid
     @Setter
     @Getter
-    private ShipAddress shippingAddress;
+    private String shippingAddress;
 
     @Setter
     @Getter
     private String uid;
 
+    //TODO to be done followingly if VALIDATION is a priority
+    //TODO violations and payload from
+    //https://medium.com/@saiteja-erwa/spring-boot-dto-validation-using-groups-and-payload-attributes-e2c139f5b1ef
     @Getter
     @Setter
-    @Size(min = 10, max = 10)
+    @Size(message ="national code must be 10 digits" , min = 10, max = 10)
     private int NationalCode;
 
     @Setter
@@ -62,25 +64,21 @@ public class User {
     @Getter
     @NotNull
     private int phoneNo;
+
     private String authenticationToken;
 
-    private String encryptedPassword;
 
-    private Instant birthday;
-
-    public User(Long id, String firstname, String lastname, int phoneNo, String authenticationToken, String encryptedPassword, Instant birthday, @Valid ShipAddress shippingAddress, String country, String province, String city, String address, String zip, String avatarUrl, String uid, Boolean privacyPolicy, Boolean marketingCommunication, Boolean thirdPartyCommunication) {
+    public User() {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNo = phoneNo;
         this.authenticationToken = authenticationToken;
-        this.encryptedPassword = encryptedPassword;
-        this.birthday = birthday;
         this.shippingAddress = shippingAddress;
         this.uid = uid;
     }
 
-    public User(Long id, String firstname, String lastname, int phoneNo, String authenticationToken, String encryptedPassword, @Valid ShipAddress shippingAddress) {
+    public User(Long id, String firstname, String lastname, int phoneNo, String authenticationToken, String encryptedPassword, @Valid ShipmentStr shippingAddress) {
     }
 
     public static UserBuilder builder() {
@@ -110,13 +108,6 @@ public class User {
         final Object other$authenticationToken = other.getAuthenticationToken();
         if (this$authenticationToken == null ? other$authenticationToken != null : !this$authenticationToken.equals(other$authenticationToken))
             return false;
-        final Object this$encryptedPassword = this.getEncryptedPassword();
-        final Object other$encryptedPassword = other.getEncryptedPassword();
-        if (this$encryptedPassword == null ? other$encryptedPassword != null : !this$encryptedPassword.equals(other$encryptedPassword))
-            return false;
-        final Object this$birthday = this.getBirthday();
-        final Object other$birthday = other.getBirthday();
-        if (this$birthday == null ? other$birthday != null : !this$birthday.equals(other$birthday)) return false;
         final Object this$shippingAddress = this.getShippingAddress();
         final Object other$shippingAddress = other.getShippingAddress();
         if (this$shippingAddress == null ? other$shippingAddress != null : !this$shippingAddress.equals(other$shippingAddress))
@@ -145,10 +136,6 @@ public class User {
         result = result * PRIME + ($email == null ? 43 : $email.hashCode());
         final Object $authenticationToken = this.getAuthenticationToken();
         result = result * PRIME + ($authenticationToken == null ? 43 : $authenticationToken.hashCode());
-        final Object $encryptedPassword = this.getEncryptedPassword();
-        result = result * PRIME + ($encryptedPassword == null ? 43 : $encryptedPassword.hashCode());
-        final Object $birthday = this.getBirthday();
-        result = result * PRIME + ($birthday == null ? 43 : $birthday.hashCode());
         final Object $shippingAddress = this.getShippingAddress();
         result = result * PRIME + ($shippingAddress == null ? 43 : $shippingAddress.hashCode());
 
@@ -158,7 +145,7 @@ public class User {
     }
 
     public String toString() {
-        return "User(id=" + this.getId() + ", firstname=" + this.getFirstname() + ", lastname=" + this.getLastname() + ", phoneNo=" + this.getPhoneNo() + ", authenticationToken=" + this.getAuthenticationToken() + ", encryptedPassword=" + this.getEncryptedPassword() + ", birthday=" + this.getBirthday() + ", shippingAddress=" + this.getShippingAddress() + ", uid=" + this.getUid() + ")";
+        return "User(id=" + this.getId() + ", firstname=" + this.getFirstname() + ", lastname=" + this.getLastname() + ", phoneNo=" + this.getPhoneNo() + ", authenticationToken=" + this.getAuthenticationToken() + ", shippingAddress=" + this.getShippingAddress() + ", uid=" + this.getUid() + ")";
     }
 
     public static class UserBuilder {
@@ -168,7 +155,7 @@ public class User {
         private int phoneNo;
         private String authenticationToken;
         private String encryptedPassword;
-        private @Valid ShipAddress shippingAddress;
+        private @Valid ShipmentStr shippingAddress;
         private String uid;
 
         UserBuilder() {
@@ -200,7 +187,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder shippingAddress(@Valid ShipAddress shippingAddress) {
+        public UserBuilder shippingAddress(@Valid ShipmentStr shippingAddress) {
             this.shippingAddress = shippingAddress;
             return this;
         }
