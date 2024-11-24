@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-@Data
 @Builder
 @Entity
 @Table(name = "issuer")
@@ -28,10 +27,14 @@ public class Issuer{
     @Setter
     @Getter
     @NotNull
+    @Column(nullable = false)
     private int issuerName;
 
-    @NotNull
-    private Long cardId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id")
+    private Card card;
 
-    private Long userId;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id")
+    private User user;
 }

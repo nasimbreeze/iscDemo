@@ -1,5 +1,6 @@
-package com.isc.asg.iscdemo.model;
+package com.isc.asg.iscdemo.dto;
 
+import com.isc.asg.iscdemo.model.User;
 import lombok.Value;
 import utils.ShipmentStr;
 

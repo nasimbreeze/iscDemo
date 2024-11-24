@@ -11,11 +11,9 @@ import utils.CardType;
 
 import java.util.Date;
 
-@Data
 @Entity
-@Table(name = "cards")
+@Table(name = "card")
 public class Card {
-
 
     @Id
     @Setter
@@ -44,6 +42,13 @@ public class Card {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date expiraryDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private User user;
 
+
+    @ManyToOne(fetch = FetchType.LAZY, optional =  true)//TODO check if optional
+    @JoinColumn(name = "id")
+    private Issuer issuer;
 
 }
