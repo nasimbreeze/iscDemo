@@ -4,12 +4,10 @@ package com.isc.asg.iscdemo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import java.util.List;
 
-@Builder
 @Entity
 @Table(name = "issuer")
-@AllArgsConstructor
-@NoArgsConstructor
 public class Issuer{
 
     @Id
@@ -30,11 +28,13 @@ public class Issuer{
     @Column(nullable = false)
     private int issuerName;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id")
-    private Card card;
-
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id")
+    @OneToOne(cascade = CascadeType.PERSIST)
     private User user;
+
+    @OneToMany( mappedBy = "issuer", cascade = CascadeType.PERSIST)
+    private List<Card> cards;
+
+    public Issuer() {
+
+    }
 }

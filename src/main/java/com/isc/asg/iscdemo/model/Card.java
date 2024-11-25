@@ -2,8 +2,6 @@ package com.isc.asg.iscdemo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,6 +11,9 @@ import java.util.Date;
 
 @Entity
 @Table(name = "card")
+@NamedQueries({
+        @NamedQuery(name = "Card.findAll", query = "select c from Card c")
+})
 public class Card {
 
     @Id
@@ -22,6 +23,7 @@ public class Card {
 
     @Getter
     @Setter
+    @Column(name = "activated")
     private boolean activated = false;
 
     @Setter
@@ -42,13 +44,15 @@ public class Card {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date expiraryDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @Column(insertable = false, updatable = false)
+    private Long issuerId;
+
+
+    @ManyToOne
     private User user;
 
-
-    @ManyToOne(fetch = FetchType.LAZY, optional =  true)//TODO check if optional
-    @JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Issuer issuer;
+
 
 }
