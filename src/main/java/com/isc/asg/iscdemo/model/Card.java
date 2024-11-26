@@ -17,8 +17,9 @@ public class Card {
 
     @Id
     @Setter
+    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cardId;
 
     @Getter
     @Setter
@@ -28,6 +29,7 @@ public class Card {
     @Setter
     @Getter
     @Size(message = "card number must be 16 digits", min = 16, max = 16)
+    @Column(name = "card_no")
     private int cardNo;
 
     @Getter
@@ -36,6 +38,8 @@ public class Card {
 
     @Getter
     @Setter
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "card_type")
     private CardType cardType;
 
     @Getter
@@ -43,9 +47,10 @@ public class Card {
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
     private Date expiraryDate;
 
+    @Setter
+    @Getter
     @Column(insertable = false, updatable = false)
     private Long issuerId;
-
 
     @ManyToOne
     private User user;

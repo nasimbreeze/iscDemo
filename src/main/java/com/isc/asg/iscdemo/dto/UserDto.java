@@ -12,13 +12,13 @@ import java.time.Instant;
  */
 @Value
 public class UserDto implements Serializable {
-    Long id;
+    Long userId;
     String firstname;
     String lastname;
     int accountNo;
     ShipmentStr shippingAddress;
     String uid;
-    int NationalCode;
+    int nationalCode;
     int cardNo;
     int phoneNo;
     String authenticationToken;

@@ -1,12 +1,26 @@
 package com.isc.asg.iscdemo.model;
 
+import jakarta.persistence.*;
+import lombok.Setter;
+
+@Table(name = "card_type")
 public enum CardType {
         CREDIT("CREDIT"), DEBIT("DEBIT");
 
-    public final String label;
+    @Column(name = "card_type")
+        public  String label;
+
+    @Id
+    @Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long card_type_id;
 
     private CardType(String cardType) {
         this.label = cardType;
+    }
+
+    CardType() {
+
     }
 
     public CardType toCardType() {
@@ -16,4 +30,5 @@ public enum CardType {
             default -> throw new IllegalStateException("Type not supported");
         };
     }
+
 }

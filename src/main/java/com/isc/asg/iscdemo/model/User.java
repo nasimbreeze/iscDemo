@@ -1,9 +1,10 @@
 package com.isc.asg.iscdemo.model;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.List;
+
+import jakarta.persistence.*;
+import java.util.Set;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId;
 
     @NotNull
     @Setter
@@ -46,11 +47,11 @@ public class User {
     //TODO to be done followingly if VALIDATION is a priority
     //TODO violations and payload from
     //https://medium.com/@saiteja-erwa/spring-boot-dto-validation-using-groups-and-payload-attributes-e2c139f5b1ef
-    @Column(length = 10,unique = true)
+    @Column(name = "national_code", length = 10,unique = true)
     @Getter
     @Setter
     @Size(message ="national code must be 10 digits" , min = 10, max = 10)
-    private int NationalCode;
+    private int nationalCode;
 
     @Column(length = 30)
     @Setter
@@ -70,7 +71,7 @@ public class User {
     private String authenticationToken;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
-    private List<Card> cards;
+    private Set<Card> cards;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Issuer issuer;

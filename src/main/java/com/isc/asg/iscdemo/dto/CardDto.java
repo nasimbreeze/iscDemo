@@ -11,7 +11,7 @@ import java.util.Date;
  */
 @Value
 public class CardDto implements Serializable {
-    Long id;
+    Long cardId;
     boolean activated;
     int cardNo;
     int issuerCode;

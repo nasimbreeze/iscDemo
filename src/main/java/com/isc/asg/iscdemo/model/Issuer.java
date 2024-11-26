@@ -1,10 +1,11 @@
 package com.isc.asg.iscdemo.model;
 
 
+import lombok.*;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.*;
-import java.util.List;
 
 @Entity
 @Table(name = "issuer")
@@ -32,7 +33,7 @@ public class Issuer{
     private User user;
 
     @OneToMany( mappedBy = "issuer", cascade = CascadeType.PERSIST)
-    private List<Card> cards;
+    private Set<Card> cards;
 
     public Issuer() {
 
