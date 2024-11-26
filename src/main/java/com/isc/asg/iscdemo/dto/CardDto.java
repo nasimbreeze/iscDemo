@@ -1,7 +1,7 @@
 package com.isc.asg.iscdemo.dto;
 
 import lombok.Value;
-import utils.CardType;
+import com.isc.asg.iscdemo.model.CardType;
 
 import java.io.Serializable;
 import java.util.Date;
