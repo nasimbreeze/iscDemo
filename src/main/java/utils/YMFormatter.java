@@ -5,9 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class YMFormatter{
 
-public YearMonth YMFormatter(String date) {
+public YearMonth ymFormatter(String date) {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM yy");
-    YearMonth ym = YearMonth.parse(date, formatter);
-    return ym;
+    return YearMonth.parse(date, formatter);
     }
 }

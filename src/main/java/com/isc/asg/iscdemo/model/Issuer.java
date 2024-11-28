@@ -13,13 +13,13 @@ public class Issuer{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long issuerId;
 
-    @Digits(integer = 6, fraction = 0)
     @Setter
-    @Column(nullable = false, unique = true)
+    @Column(name = "issuer_code", nullable = false, unique = true)
     @Getter
     @NotNull
+    @Digits(integer = 6, fraction = 0)
     @Size(message = "issuer code must be 6 digits", min = 6, max = 6)
     private int issuerCode;
 
@@ -27,15 +27,10 @@ public class Issuer{
     @Getter
     @NotNull
     @Column(nullable = false)
-    private int issuerName;
-
-    @OneToOne(cascade = CascadeType.PERSIST)
-    private User user;
+    private String issuerName;
 
     @OneToMany( mappedBy = "issuer", cascade = CascadeType.PERSIST)
-    private Set<Card> cards;
+    private Set<CardDetails> cardDetailsSet;
 
-    public Issuer() {
 
-    }
 }

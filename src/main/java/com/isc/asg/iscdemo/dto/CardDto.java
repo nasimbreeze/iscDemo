@@ -16,5 +16,5 @@ public class CardDto implements Serializable {
     int cardNo;
     int issuerCode;
     CardType cardType;
-    Date expiraryDate;
+    Date expiryDate;
 }

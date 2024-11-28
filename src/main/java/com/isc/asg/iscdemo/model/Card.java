@@ -5,8 +5,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.util.Date;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "card")
@@ -16,8 +17,6 @@ import java.util.Date;
 public class Card {
 
     @Id
-    @Setter
-    @Getter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
 
@@ -29,34 +28,24 @@ public class Card {
     @Setter
     @Getter
     @Size(message = "card number must be 16 digits", min = 16, max = 16)
-    @Column(name = "card_no")
-    private int cardNo;
-
-    @Getter
-    @Setter
-    private int issuerCode;
+    @Column
+    private String cardNo;
 
     @Getter
     @Setter
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "card_type")
     private CardType cardType;
 
     @Getter
-    @Setter
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
-    private Date expiraryDate;
-
-    @Setter
-    @Getter
-    @Column(insertable = false, updatable = false)
-    private Long issuerId;
+    @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "MM yy")
+    private Date expiryDate;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Issuer issuer;
-
+    @OneToMany(mappedBy = "card")
+    private Set<CardDetails> cardDetails;
 
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Embeddable
-public class CardIssuerTypeKey implements Serializable {
+public class cardDetailsKey implements Serializable {
 
     @Column(name = "card_type")
     private String cardType;
@@ -16,10 +16,12 @@ public class CardIssuerTypeKey implements Serializable {
     @Column(name = "issuer_code")
     private int issuerCode;
 
-    public CardIssuerTypeKey() {
+    public cardDetailsKey() {}
+
+  /*  public CardIssuerTypeKey(String cardType, int issuerCode) {
         this.cardType = cardType;
         this.issuerCode = issuerCode;
-    }
+    }*/
 
     // equals() and hashCode()
 }

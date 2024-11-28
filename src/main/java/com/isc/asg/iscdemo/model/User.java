@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+
 import java.util.Set;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -47,17 +48,11 @@ public class User {
     //TODO to be done followingly if VALIDATION is a priority
     //TODO violations and payload from
     //https://medium.com/@saiteja-erwa/spring-boot-dto-validation-using-groups-and-payload-attributes-e2c139f5b1ef
-    @Column(name = "national_code", length = 10,unique = true)
+    @Column(name = "national_code", length = 10, unique = true)
     @Getter
     @Setter
-    @Size(message ="national code must be 10 digits" , min = 10, max = 10)
+    @Size(message = "national code must be 10 digits", min = 10, max = 10)
     private int nationalCode;
-
-    @Column(length = 30)
-    @Setter
-    @Getter
-    @Size(message ="card no must be 16 digits", min = 16, max = 16)
-    private int cardNo;
 
     @Column(length = 10)
     @Setter
@@ -73,8 +68,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<Card> cards;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
-    private Issuer issuer;
 
     public User() {
         /*this.firstname = firstname;

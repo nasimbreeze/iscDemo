@@ -1,0 +1,3 @@
+insert into CARD (CARD_ID, ACTIVATED, CARD_NO, CARD_TYPE, EXPIRY_DATE, USER_ID)
+values ('200', '1', '23234453', 'DEBIT',
+        CURRENT_TIME, '100');
