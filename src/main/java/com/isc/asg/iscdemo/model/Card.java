@@ -28,12 +28,13 @@ public class Card {
     @Setter
     @Getter
     @Size(message = "card number must be 16 digits", min = 16, max = 16)
-    @Column
+    @Column(nullable = false, length = 16)
     private String cardNo;
 
     @Getter
     @Setter
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 6)
     private CardType cardType;
 
     @Getter

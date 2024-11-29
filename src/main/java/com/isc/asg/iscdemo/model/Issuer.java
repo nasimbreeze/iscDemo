@@ -16,7 +16,7 @@ public class Issuer{
     private Long issuerId;
 
     @Setter
-    @Column(name = "issuer_code", nullable = false, unique = true)
+    @Column(name = "issuer_code", nullable = false, unique = true, length = 6)
     @Getter
     @NotNull
     @Digits(integer = 6, fraction = 0)
