@@ -11,15 +11,15 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "customer")
 @NamedQueries({
-        @NamedQuery(name = "User.countBy", query = "select count(u) from User u")
+        @NamedQuery(name = "Customer.countBy", query = "select count(u) from Customer u")
 })
-public class User {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long customerId;
 
     @NotNull
     @Setter
@@ -65,11 +65,11 @@ public class User {
     @Getter
     private String authenticationToken;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
     private Set<Card> cards;
 
 
-    public User() {
+    public Customer() {
         /*this.firstname = firstname;
         this.lastname = lastname;
         this.authenticationToken = authenticationToken;

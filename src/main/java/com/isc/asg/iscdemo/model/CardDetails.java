@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class CardDetails {
 
     @EmbeddedId
-    private cardDetailsKey cardDetailsId;
+    private CardDetailsKey cardDetailsId;
 
     @ManyToOne
     @MapsId("card_type")

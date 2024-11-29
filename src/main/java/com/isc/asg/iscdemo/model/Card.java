@@ -43,8 +43,8 @@ public class Card {
     private Date expiryDate;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @OneToMany(mappedBy = "card")
     private Set<CardDetails> cardDetails;

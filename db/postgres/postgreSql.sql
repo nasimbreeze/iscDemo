@@ -5,15 +5,15 @@ CREATE TABLE card
     card_no     VARCHAR(16),
     card_type   VARCHAR(255),
     expiry_date TIMESTAMP,
-    user_id     BIGINT,
+    customer_id     BIGINT,
     CONSTRAINT pk_card PRIMARY KEY (card_id)
 );
 ALTER TABLE card
-    ADD CONSTRAINT FK_CARD_ON_USER FOREIGN KEY (user_id) REFERENCES "user" (user_id);
+    ADD CONSTRAINT FK_CARD_ON_customer FOREIGN KEY (customer_id) REFERENCES "customer" (customer_id);
 
-CREATE TABLE "user"
+CREATE TABLE "customer"
 (
-    user_id              BIGINT NOT NULL,
+    customer_id              BIGINT NOT NULL,
     firstname            VARCHAR(15),
     lastname             VARCHAR(15),
     account_no           INT,
@@ -22,8 +22,8 @@ CREATE TABLE "user"
     card_no              INT,
     phone_no             INT,
     authentication_token VARCHAR(255),
-    CONSTRAINT pk_user PRIMARY KEY (user_id)
+    CONSTRAINT pk_customer PRIMARY KEY (customer_id)
 );
 
-ALTER TABLE "user"
-    ADD CONSTRAINT uc_user_national_code UNIQUE (national_code);
+ALTER TABLE "customer"
+    ADD CONSTRAINT uc_customer_national_code UNIQUE (national_code);
