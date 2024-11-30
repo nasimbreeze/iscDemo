@@ -2,6 +2,8 @@ package com.isc.asg.iscdemo.model;
 
 
 import lombok.*;
+
+import java.util.Collection;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -33,4 +35,14 @@ public class Issuer{
     private Set<CardDetails> cardDetailsSet;
 
 
+    @OneToMany(mappedBy = "issuer")
+    private Collection<Card> card;
+
+    public Collection<Card> getCard() {
+        return card;
+    }
+
+    public void setCard(Collection<Card> card) {
+        this.card = card;
+    }
 }
