@@ -27,7 +27,7 @@ CREATE TABLE card
 );
 
 ALTER TABLE card
-    ADD CONSTRAINT FK_CARD_ON_customer FOREIGN KEY (customer_id) REFERENCES "customer" (customer_id);
+    ADD CONSTRAINT FK_CARD_ON_CUSTOMER FOREIGN KEY (customer_id) REFERENCES customer (customer_id);
 
 CREATE TABLE issuer
 (

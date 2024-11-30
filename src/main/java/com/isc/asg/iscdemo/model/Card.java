@@ -28,7 +28,7 @@ public class Card {
     @Setter
     @Getter
     @Size(message = "card number must be 16 digits", min = 16, max = 16)
-    @Column(nullable = false, length = 16)
+    @Column(nullable = false, length = 16, unique = true)
     private String cardNo;
 
     @Getter
@@ -41,6 +41,10 @@ public class Card {
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "MM yy")
     private Date expiryDate;
+
+    @ManyToOne
+    @JoinColumn(name = "issuer_id")
+    private Issuer issuer;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
