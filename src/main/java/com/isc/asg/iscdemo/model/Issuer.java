@@ -14,16 +14,12 @@ import jakarta.validation.constraints.*;
 public class Issuer{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long issuerId;
-
-    @Setter
-    @Column(name = "issuer_code", nullable = false, unique = true, length = 6)
     @Getter
     @NotNull
     @Digits(integer = 6, fraction = 0)
     @Size(message = "issuer code must be 6 digits", min = 6, max = 6)
-    private int issuerCode;
+    @Column(name = "issuer_code", length = 6)
+    private String issuerCode;
 
     @Setter
     @Getter

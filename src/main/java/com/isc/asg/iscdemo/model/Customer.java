@@ -1,5 +1,6 @@
 package com.isc.asg.iscdemo.model;
 
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -59,6 +60,13 @@ public class Customer {
     @Getter
     @NotNull
     private int phoneNo;
+
+    @Column
+    @Setter
+    @Getter
+    @Email(message = "Email should be valid")
+    private String email;
+
 
     @Column
     @Setter

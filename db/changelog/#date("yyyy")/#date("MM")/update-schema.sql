@@ -18,9 +18,10 @@ ALTER TABLE customer
 CREATE TABLE card
 (
     card_id     BIGINT NOT NULL,
-    activated   BOOLEAN,
-    card_no     VARCHAR(16),
-    card_type   VARCHAR(255),
+    activated   BOOLEAN NOT NULL,
+    card_no     VARCHAR(16) NOT NULL,
+    card_type   VARCHAR(255)
+        check ( card_type IN ('Credit', 'Debit')),
     expiry_date TIMESTAMP,
     customer_id     BIGINT,
     CONSTRAINT pk_card PRIMARY KEY (card_id)

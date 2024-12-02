@@ -1,6 +1,7 @@
 package com.isc.asg.iscdemo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,11 +23,12 @@ public class Card {
 
     @Getter
     @Setter
-    @Column(name = "activated")
+    @Column(name = "activated", nullable = false)
     private boolean activated = false;
 
     @Setter
     @Getter
+    @Min(value = 18, message = "card number must be 16 digits")
     @Size(message = "card number must be 16 digits", min = 16, max = 16)
     @Column(nullable = false, length = 16, unique = true)
     private String cardNo;

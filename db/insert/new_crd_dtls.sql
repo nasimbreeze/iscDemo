@@ -2,3 +2,6 @@ insert into CARD_DETAILS (CARD_TYPE, ISSUER_CODE)
 values (200, 100);
 insert into CARD_DETAILS (CARD_TYPE, ISSUER_CODE)
 values (203, 100);
+
+insert into CARD_DETAILS (CARD_TYPE, ISSUER_CODE)
+values (201, 100);
