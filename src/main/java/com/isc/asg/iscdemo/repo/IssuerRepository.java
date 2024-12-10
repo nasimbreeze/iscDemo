@@ -1,7 +1,9 @@
 package com.isc.asg.iscdemo.repo;
 
 import com.isc.asg.iscdemo.model.Issuer;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IssuerRepository extends Repository<Issuer, Long> {
+@Repository
+public interface IssuerRepository extends JpaRepository<Issuer, Long> {
 }

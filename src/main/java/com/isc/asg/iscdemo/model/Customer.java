@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,6 +21,8 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
+    @Getter
     private Long customerId;
 
     @NotNull
@@ -39,14 +42,14 @@ public class Customer {
     @NotNull
     @Column(length = 10)
     @Size(min = 10, max = 10)
-    private int accountNo;
+    private String accountNo;
 
     @Column(length = 40)
     @Setter
     @Getter
     private String shippingAddress;
 
-    //TODO to be done followingly if VALIDATION is a priority
+    //TODO to be done following if VALIDATION is a priority
     //TODO violations and payload from
     //https://medium.com/@saiteja-erwa/spring-boot-dto-validation-using-groups-and-payload-attributes-e2c139f5b1ef
     @Column(name = "national_code", length = 10, unique = true)
@@ -73,8 +76,10 @@ public class Customer {
     @Getter
     private String authenticationToken;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
-    private Set<Card> cards;
+    @Setter
+    @Getter
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Card> cards = new HashSet<>();
 
 
     public Customer() {

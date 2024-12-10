@@ -7,16 +7,21 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "card")
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"customer_id", "issuer_id", "cardType"})
+})
 @NamedQueries({
         @NamedQuery(name = "Card.findAll", query = "select c from Card c")
 })
 public class Card {
 
+    @Setter
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cardId;
@@ -44,15 +49,18 @@ public class Card {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "MM yy")
     private Date expiryDate;
 
+
     @ManyToOne
     @JoinColumn(name = "issuer_id")
+    @Setter
+    @Getter
     private Issuer issuer;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @Setter
+    @Getter
     private Customer customer;
 
-    @OneToMany(mappedBy = "card")
-    private Set<CardDetails> cardDetails;
 
 }

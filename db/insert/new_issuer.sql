@@ -1,8 +1,8 @@
-insert into ISSUER (ISSUER_ID, ISSUER_CODE, ISSUER_NAME)
-values (100, 11111, 'Mellat');
-insert into ISSUER (ISSUER_ID, ISSUER_CODE, ISSUER_NAME)
-values (101, 2222222, 'Melli');
-insert into ISSUER (ISSUER_ID, ISSUER_CODE, ISSUER_NAME)
-values (102, 333333, 'Pasargad');
-insert into ISSUER (ISSUER_ID, ISSUER_CODE, ISSUER_NAME)
-values (103, 4444444, 'Pasargad');
+insert into ISSUER (ID, ISSUER_CODE, ISSUER_NAME)
+values (10, 100, 'Mellat');
+insert into ISSUER (ID, ISSUER_CODE, ISSUER_NAME)
+values (11, 101, 'Melli');
+insert into ISSUER (ID, ISSUER_CODE, ISSUER_NAME)
+values (12, 102, 'Pasargad');
+insert into ISSUER ( ID, ISSUER_CODE, ISSUER_NAME)
+values (13, 103, 'Pasargad');
