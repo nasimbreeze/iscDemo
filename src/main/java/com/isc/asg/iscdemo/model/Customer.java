@@ -56,7 +56,7 @@ public class Customer {
     @Getter
     @Setter
     @Size(message = "national code must be 10 digits", min = 10, max = 10)
-    private int nationalCode;
+    private String nationalCode;
 
     @Column(length = 10)
     @Setter

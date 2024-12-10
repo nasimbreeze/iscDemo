@@ -50,13 +50,13 @@ public class Card {
     private Date expiryDate;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "issuer_id")
     @Setter
     @Getter
     private Issuer issuer;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     @Setter
     @Getter

@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
 @Transactional
 public class CardService {
 
-    @Qualifier("customerRepository")
+//    @Qualifier("customerRepository")
+    @Autowired
     private CustomerRepository customerRepository;
 
     @Autowired

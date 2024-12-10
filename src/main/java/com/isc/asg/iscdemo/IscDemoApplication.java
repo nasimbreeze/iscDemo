@@ -10,7 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.isc.asg.iscdemo.model.CardType;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.isc.asg.iscdemo.repo")
 @EntityScan(basePackages = "com.isc.asg.iscdemo")
-public class IscDemoApplication{
+public class IscDemoApplication implements CommandLineRunner {
 
     @Autowired
     private CardService cardService;
@@ -28,26 +27,30 @@ public class IscDemoApplication{
         SpringApplication.run(IscDemoApplication.class, args);
     }
 
-   /* @Override
+    @Override
     public void run(String... args) {
         // Add sample data
         Customer customer = new Customer();
-        customer.setFirstname("John Doe");
+        customer.setFirstname("John");
+        customer.setLastname("Doe");
+        customer.setNationalCode("5588929623");
 
         Issuer issuer1 = new Issuer();
         issuer1.setIssuerName("Bank A");
+        issuer1.setIssuerCode("123456");
 
         Issuer issuer2 = new Issuer();
         issuer2.setIssuerName("Bank B");
+        issuer2.setIssuerCode("123457");
 
         Card card1 = new Card();
-        card1.setCardNo("1111-2222-3333-4444");
+        card1.setCardNo("1111222233334444");
         card1.setCardType(CardType.CR);
         card1.setIssuer(issuer1);
         card1.setCustomer(customer);
 
         Card card2 = new Card();
-        card2.setCardNo("5555-6666-7777-8888");
+        card2.setCardNo("5555666677778888");
         card2.setCardType(CardType.DE);
         card2.setIssuer(issuer2);
         card2.setCustomer(customer);
@@ -80,8 +83,23 @@ public class IscDemoApplication{
             Issuer newIssuer = new Issuer();
             newIssuer.setIssuerName("Issuer " + i);
 
+            String issuerCode;
+            issuerCode = "12345" + i;
+            if(issuerCode.length() > 6) {
+                issuerCode = issuerCode.substring(issuerCode.length() - 6);
+                System.out.println("12345 " + issuerCode);
+            }
+            newIssuer.setIssuerCode(issuerCode);
+
             Card newCard = new Card();
-            newCard.setCardNo("Card-" + i);
+            String cardNo ;
+            cardNo = "123498763452666" + i;
+            if(cardNo.length() > 16) {
+                cardNo = cardNo.substring(cardNo.length() - 16);
+                System.out.println("123498763452666 " + cardNo);
+            }
+
+            newCard.setCardNo(cardNo);
             newCard.setCardType(i % 2 == 0 ? CardType.CR : CardType.DE);
             newCard.setIssuer(newIssuer);
             newCard.setCustomer(newCustomer);
@@ -93,5 +111,5 @@ public class IscDemoApplication{
 
         long finalMemory = runtime.totalMemory() - runtime.freeMemory();
         System.out.println("Memory used by application: " + (finalMemory - initialMemory) + " bytes");
-    }*/
+    }
 }
