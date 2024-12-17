@@ -1,5 +1,5 @@
 services:
-    customer-card-service:
+    isc-card:
       build:
         context: .
         dockerfile: Dockerfile

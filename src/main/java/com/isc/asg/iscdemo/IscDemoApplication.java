@@ -1,18 +1,17 @@
 package com.isc.asg.iscdemo;
 
 import com.isc.asg.iscdemo.model.Card;
+import com.isc.asg.iscdemo.model.CardType;
 import com.isc.asg.iscdemo.model.Customer;
 import com.isc.asg.iscdemo.model.Issuer;
 import com.isc.asg.iscdemo.service.CardService;
+import com.isc.asg.iscdemo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.isc.asg.iscdemo.model.CardType;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import java.util.List;
 
 
 @SpringBootApplication
@@ -22,6 +21,8 @@ public class IscDemoApplication implements CommandLineRunner {
 
     @Autowired
     private CardService cardService;
+    @Autowired
+    private CustomerService customerService;
 
     public static void main(String[] args) {
         SpringApplication.run(IscDemoApplication.class, args);
@@ -44,13 +45,13 @@ public class IscDemoApplication implements CommandLineRunner {
         issuer2.setIssuerCode("123457");
 
         Card card1 = new Card();
-        card1.setCardNo("1111222233334444");
+        card1.setCardNo("1111222233334447");
         card1.setCardType(CardType.CR);
         card1.setIssuer(issuer1);
         card1.setCustomer(customer);
 
         Card card2 = new Card();
-        card2.setCardNo("5555666677778888");
+        card2.setCardNo("5555666677778889");
         card2.setCardType(CardType.DE);
         card2.setIssuer(issuer2);
         card2.setCustomer(customer);
@@ -58,9 +59,10 @@ public class IscDemoApplication implements CommandLineRunner {
         customer.getCards().add(card1);
         customer.getCards().add(card2);
 
-        cardService.saveCustomer(customer);
+        customerService.saveCustomer(customer);
 
-        // Fetch and display data
+        System.out.println("Customers found with findAll():" + customerService.getAllCustomers().size()) ;
+        /*// Fetch and display data
         System.out.println("Exclusive cards for customer ID 1:");
         List<Card> exclusiveCards = cardService.getExclusiveCardsByCustomerId(1L);
         exclusiveCards.forEach(card -> System.out.println(card.getCardNo()));
@@ -110,6 +112,6 @@ public class IscDemoApplication implements CommandLineRunner {
         }
 
         long finalMemory = runtime.totalMemory() - runtime.freeMemory();
-        System.out.println("Memory used by application: " + (finalMemory - initialMemory) + " bytes");
+        System.out.println("Memory used by application: " + (finalMemory - initialMemory) + " bytes");*/
     }
 }

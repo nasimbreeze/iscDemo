@@ -14,20 +14,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class CardService {
-
-//    @Qualifier("customerRepository")
-    @Autowired
-    private CustomerRepository customerRepository;
 
     @Autowired
     private CardRepository cardRepository;
 
-    public Customer saveCustomer(Customer customer) {
-        return customerRepository.save(customer);
-    }
-
+    @Transactional
     public List<Card> getExclusiveCardsByCustomerId(Long customerId) {
         List<Card> cards = cardRepository.findCardsByCustomerId(customerId);
         return cards.stream()
@@ -41,7 +33,5 @@ public class CardService {
                 .collect(Collectors.toList());
     }
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
-    }
+
 }

@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    @Query("SELECT c FROM Card c WHERE c.customer.customerId = :customerId")
+    @Query("SELECT c FROM Card c WHERE c.customer.id = :customerId")
     List<Card> findCardsByCustomerId(Long customerId);
 }

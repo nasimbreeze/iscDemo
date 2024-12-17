@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -22,9 +20,10 @@ public class Card {
 
     @Setter
     @Getter
+    @Column(name="card_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cardId;
+    private Long id;
 
     @Getter
     @Setter

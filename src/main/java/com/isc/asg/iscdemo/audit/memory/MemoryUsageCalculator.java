@@ -1,9 +1,5 @@
+/*
 package com.isc.asg.iscdemo.audit.memory;
-
-import com.isc.asg.iscdemo.model.Card;
-import com.isc.asg.iscdemo.model.CardType;
-import com.isc.asg.iscdemo.model.Customer;
-import com.isc.asg.iscdemo.model.Issuer;
 
 public class MemoryUsageCalculator {
 
@@ -15,7 +11,8 @@ public class MemoryUsageCalculator {
         long initialMemory = runtime.totalMemory() - runtime.freeMemory();
 
         // Create objects
-        /*InMemoryCardCustomerRepository repository = new InMemoryCardCustomerRepository();
+        */
+/*InMemoryCardCustomerRepository repository = new InMemoryCardCustomerRepository();
 
         // Add sample data
         for (long i = 1; i <= 10; i++) {
@@ -50,6 +47,8 @@ public class MemoryUsageCalculator {
         // Calculate memory used
         long memoryUsed = finalMemory - initialMemory;
 
-        System.out.println("Memory used: " + memoryUsed + " bytes");*/
+        System.out.println("Memory used: " + memoryUsed + " bytes");*//*
+
     }
 }
+*/

@@ -12,7 +12,7 @@ import java.time.Instant;
  */
 @Value
 public class CustomerDto implements Serializable {
-    Long customerId;
+    Long id;
     String firstname;
     String lastname;
     int accountNo;

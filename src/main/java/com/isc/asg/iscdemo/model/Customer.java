@@ -14,16 +14,14 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customer")
-@NamedQueries({
-        @NamedQuery(name = "Customer.countBy", query = "select count(u) from Customer u")
-})
 public class Customer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
-    private Long customerId;
+    @Column(name = "customer_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotNull
     @Setter

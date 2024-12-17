@@ -3,9 +3,11 @@ package com.isc.asg;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Map;
 
+@EnableTransactionManagement
 @Configuration
 public class JpaConfig {
 
